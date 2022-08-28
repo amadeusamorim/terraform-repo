@@ -42,11 +42,15 @@ Se você tem uma infra no código, você vai otimizar muito o seu tempo em provi
 ```bash
 $ terraform init
 ```
-2. Mostra como vai ficar o ambiente (planeja).
+2. Mostra como vai ficar o ambiente (planeja). Também pode ser usado independente, para fins de verificar que mudançar irão ser aplicadas.
 ```bash
 $ terraform plan
 ```
-3. Pega o planejamento e joga para a plataforma que receberá o deploy, efetivando assim as mudanças. Esse passo exige uma confirmação.
+3. Pega o planejamento e joga para a plataforma que receberá o deploy, efetivando assim as mudanças. Esse passo exige uma confirmação. Pode ser usado sem o `plan`, porém não é recomendável.
 ```bash
 $ terraform apply
+```
+4. Mostra uma _foto_ de como está seu ambiente naquele momento.
+```bash
+$ terraform show
 ```
