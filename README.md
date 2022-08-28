@@ -17,7 +17,7 @@ Para usar a ferramenta é necessário apenas **baixar** o Terraform.
 
 Se você tem uma infra no código, você vai otimizar muito o seu tempo em provisionar ambientes.
 
-**VANTAGENS DE USAR O TERRAFORM COMO IaaC**
+### VANTAGENS DE USAR O TERRAFORM COMO IaaC
 
 - Automatizar um provisionamento de infraestrutura;
 - Mudar, Atualizar, Deletar, Recriar uma infraestrutura;
@@ -29,15 +29,15 @@ Se você tem uma infra no código, você vai otimizar muito o seu tempo em provi
 
 
 ## Dentro da ferramenta
-**Atualizar o Terraform**
 
+### ATUALIZAR O TERRAFORM
 `terraform version` → Checa a versão do Terraform
 
 - Baixar diretamente do site;
 - Unzipar;
 - Mover o arquivo terraform para onde ele estava anteriormente.
 
-**Passos para o Deploy**
+### PASSOS PARA O DEPLOY
 1. Baixa as dependências.
 ```bash
 $ terraform init
@@ -54,3 +54,6 @@ $ terraform apply
 ```bash
 $ terraform show
 ```
+
+### DENTRO DO CÓDIGO
+- Para utilizarmos as dependências entre os recursos, é necessário o `depends_on`. Dentro do código ele vincula recursos, desta forma a criação/exclusão de um implica respectivamente no outro. 
