@@ -1,4 +1,12 @@
-# Informações gerais sobre o Terraform | Material de Apoio
+# Terraform Overview | Material de Apoio
+
+<p align="center">
+    <br/>
+    <a href="https://freeimage.host/br">	
+        <img src="https://iili.io/47sDe1.jpg" alt="Terraform Overview">
+    </a>
+</p>
+
 
 **A ideia do Terraform é nos ajudar a provisionar a infraestrutura,** criando e gerenciando por meio de código, muito conhecido também como **IaaC** (Infrastructure as a Code).
 
