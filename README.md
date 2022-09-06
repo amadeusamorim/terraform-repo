@@ -33,7 +33,8 @@ Se você tem uma infra no código, você vai otimizar muito o seu tempo em provi
 - Validar mudanças antes de colocar em produção;
 - Crescer rapidamente o seu ambiente;
 - Reusar o código para projetos similares e reduzir o custo de desenvolvimento;
-- Melhorar a colaboração do time de DevOps.
+- Melhorar a colaboração do time de DevOps
+- Se os arquivos estiverem no mesmo diretório, o Terraform entende que os arquivos se comunicam.
 
 
 ## Dentro da ferramenta
@@ -65,3 +66,10 @@ $ terraform show
 
 ### DENTRO DO CÓDIGO
 - Para utilizarmos as dependências entre os recursos, é necessário o `depends_on`. Dentro do código ele vincula recursos, desta forma a criação/exclusão de um implica respectivamente no outro. 
+
+### DICAS E SUGESTOÕES
+- Utilize o código sempre quebrando a infra em arquivos diferentes.
+- Os recursos principais, como instâncias, blobs/buckets, um database, é ideal que se coloque no arquivo main.tf.
+- Recursos separados, tal como SG, variáveis, etc, é ideal que se separe em outros arquivos. 
+- Utilizar o `depends_on` para organizar a infra, provisionando os recursos em ordem de prioridade.
+

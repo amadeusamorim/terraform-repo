@@ -4,6 +4,14 @@ provider "aws" {
 	region = "us-east-1"
 }
 
+# Criando uma nova região
+provider "aws" {
+  # Criando um alias para que não dê problema com os nomes iguais dos providers
+  alias = "us-east-2"
+	version = "~> 2.0"
+	region = "us-east-2"
+}
+
 ### INSTÂNCIAS ###
 
 # Se é um recurso, tenho que colocar uma instância
@@ -52,32 +60,21 @@ resource "aws_instance" "dev5" {
     vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
 }
 
-### SECURITY GROUP ###
-
-# Cria o acesso ao Security Group e Dá o nome de acesso-ssh
-resource "aws_security_group" "acesso-ssh" { 
-  name        = "acesso-ssh"
-  description = "acesso-ssh"
-
-  ingress {
-    # Descrição é opcional
-    description      = "Porta que o SSH funciona"
-    # Porta que quero ter acesso (TCP do SSH)
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    # CDIR são as boas práticas de segurança e determina os IPs permitidos
-    # No meu caso, coloquei o meu IP dinâmico, mas nas empresas, habitualmente são fixos
-    # Abrir em 0.0.0.0/0 pode gerar problemas de vulnerabilidade em sua segurança.
-    cidr_blocks      = ["177.83.197.84/32"]
-# Se meu IP for IPV6, colocar no campo abaixo
-#    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
-  }
-  tags = {
-    name = "ssh"
-  }
+# Outra região
+resource "aws_instance" "dev6" {
+  provider = "aws.us-east-2"
+  # Faço referência a minha nova VM
+	ami = "ami-0d8f6eb4f641ef691" 
+	instance_type = "t2.micro" 
+	key_name = "terraform-aws" 
+	tags = {
+      name = "dev6" 
+	}
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh-us-east-2.id}"]
+    depends_on = [
+      "aws_dynamodb_table.dynamodb-homologacao"
+    ]
 }
-# Após essas configurações modificando meu ambiente, já posso conectar na minha VM via SSH.
 
 ### BUCKET ###
 
@@ -91,5 +88,25 @@ resource "aws_s3_bucket" "dev4" {
 
   tags = {
     Name        = "amadeusamorim-labs-dev4"
+  }
+}
+
+### DATABASE ###
+
+resource "aws_dynamodb_table" "dynamodb-homologacao" {
+  provider = "aws.us-east-2"
+  name           = "GameScores"
+  billing_mode   = "PAY_PER_REQUEST"
+  hash_key       = "UserId"
+  range_key      = "GameTitle"
+
+  attribute {
+    name = "UserId"
+    type = "S"
+  }
+
+  attribute {
+    name = "GameTitle"
+    type = "S"
   }
 }
