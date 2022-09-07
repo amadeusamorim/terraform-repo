@@ -90,6 +90,8 @@ resource "aws_instance" "dev7" {
 
 ### BUCKET ###
 
+/*
+Comento para apagar um recuso
 # Vinculo esse recurso a uma nova máquina de desenvolvimento
 # Na AWS o bucket é multiregional e não precisa vincular uma região
 resource "aws_s3_bucket" "dev4" {
@@ -97,9 +99,19 @@ resource "aws_s3_bucket" "dev4" {
   bucket = "amadeusamorim-labs-dev4"
   # Permissionamento do meu bucket (privado)
   acl    = "private"
-
   tags = {
     Name        = "amadeusamorim-labs-dev4"
+  }
+}
+*/
+
+# Ao criar esse novo bucket com o remote conectado, é criado uma nova hash no nosso workspace
+# É criado uma nova versão para o nosso controle
+resource "aws_s3_bucket" "homologacao" {
+  bucket = "amadeusamorim-labs-homologacao"
+  acl    = "private"
+  tags = {
+    Name        = "amadeusamorim-labs-homologacao"
   }
 }
 
