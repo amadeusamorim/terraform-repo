@@ -18,7 +18,8 @@ resource "aws_security_group" "acesso-ssh" {
     # CDIR são as boas práticas de segurança e determina os IPs permitidos
     # No meu caso, coloquei o meu IP dinâmico, mas nas empresas, habitualmente são fixos
     # Abrir em 0.0.0.0/0 pode gerar problemas de vulnerabilidade em sua segurança.
-    cidr_blocks      = ["177.83.197.84/32"]
+    # Acessando meu cdir_block por meio de variável
+    cidr_blocks      = "${var.cidr_acesso_remoto}"
 # Se meu IP for IPV6, colocar no campo abaixo
 #    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
   }
@@ -39,7 +40,7 @@ resource "aws_security_group" "acesso-ssh-us-east-2" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["177.83.197.84/32"]
+    cidr_blocks      = "${var.cidr_acesso_remoto}"
   }
   tags = {
     name = "ssh"

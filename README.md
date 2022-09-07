@@ -65,7 +65,11 @@ $ terraform show
 ```
 
 ### DENTRO DO CÓDIGO
-- Para utilizarmos as dependências entre os recursos, é necessário o `depends_on`. Dentro do código ele vincula recursos, desta forma a criação/exclusão de um implica respectivamente no outro. 
+- Para utilizarmos as dependências entre os recursos, é necessário o `depends_on`. Dentro do código ele vincula recursos, desta forma a criação/exclusão de um implica respectivamente no outro.
+- Na criação de variáveis, consideramos os tipos:
+  - O tipo map utiliza { } em sua declaração e contém chaves e valores.
+  - O tipo list utiliza [ ] em sua declaração.
+  - O tipo string não precisa ser declarado, pois o Terraform subtende.
 
 ### DICAS E SUGESTOÕES
 - Utilize o código sempre quebrando a infra em arquivos diferentes.
