@@ -63,6 +63,19 @@ $ terraform apply
 ```bash
 $ terraform show
 ```
+5. Destrói o recurso passado como parâmetro, por exemplo: a máquina dev4. (Quando destruímos uma dependência, destruímos os recursos que dependem dela)
+   1. Ao destruir via comando, ainda se faz necessário deletar o código dentro do script do Terraform.
+```bash
+$ terraform destroy -target aws.instance.dev4
+```
+6. Acaba com toda a infra.
+```bash
+$ terraform destroy
+```
+7. Faz o reload do código.
+```bash
+$ terraform refresh
+```
 
 ### DENTRO DO CÓDIGO
 - Para utilizarmos as dependências entre os recursos, é necessário o `depends_on`. Dentro do código ele vincula recursos, desta forma a criação/exclusão de um implica respectivamente no outro.
@@ -70,10 +83,13 @@ $ terraform show
   - O tipo map utiliza { } em sua declaração e contém chaves e valores.
   - O tipo list utiliza [ ] em sua declaração.
   - O tipo string não precisa ser declarado, pois o Terraform subtende.
+- Ao apagar um recurso do código, o Terraform entende que é para destruí-lo.
+  - Também é possível comentar o código para o Terraform destruí-lo.
+  - Também pode ser feito via comando, como repassado na seção anterior.
 
 ### DICAS E SUGESTOÕES
 - Utilize o código sempre quebrando a infra em arquivos diferentes.
 - Os recursos principais, como instâncias, blobs/buckets, um database, é ideal que se coloque no arquivo main.tf.
 - Recursos separados, tal como SG, variáveis, etc, é ideal que se separe em outros arquivos. 
 - Utilizar o `depends_on` para organizar a infra, provisionando os recursos em ordem de prioridade.
-
+- A recomendação é que tenhamos sempre os arquivos `main.tf`, `vars.tf` e `outputs.tf`.
