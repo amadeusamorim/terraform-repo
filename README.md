@@ -36,6 +36,20 @@ Se você tem uma infra no código, você vai otimizar muito o seu tempo em provi
 - Melhorar a colaboração do time de DevOps
 - Se os arquivos estiverem no mesmo diretório, o Terraform entende que os arquivos se comunicam.
 
+## Pré-código
+Antes de colocarmos a mão na massa e escrevermos nossos códigos é necessário seguir alguns pontos, nos quais são elencados abaixo:
+- Para utilizar o Terraform no seu ambiente local é necessário adicionar um usuário na sua cloud escolhida e concender permissões de Administrador para o Terraform.
+- É recomendável você exportar para seu ambiente via CLI as credenciais: Access Key ID, Secret Acess Key ID e Região padrão (não mandatório).
+```bash
+# Exemplo AWS e Linux
+$ export AWS_ACESS_KEY_ID='CHAVE AWS'
+$ export AWS_SECRET_ACESS_KEY='SECRET ACESS KEY'
+```
+```powershell
+# Exemplo AWS e Windows
+$env:AWS_ACESS_KEY_ID='CHAVE AWS'
+$env:AWS_SECRET_ACESS_KEY='SECRET ACESS KEY'
+```
 
 ## Dentro da ferramenta
 
@@ -47,7 +61,7 @@ Se você tem uma infra no código, você vai otimizar muito o seu tempo em provi
 - Mover o arquivo terraform para onde ele estava anteriormente.
 
 ### PASSOS PARA O DEPLOY
-1. Baixa as dependências.
+1. Baixa as dependências para a sua pasta do Terraform. É recomendável usar o `.gitignore` para a pasta das dependências. 
 ```bash
 $ terraform init
 ```
@@ -87,7 +101,8 @@ $ terraform refresh
   - Também é possível comentar o código para o Terraform destruí-lo.
   - Também pode ser feito via comando, como repassado na seção anterior.
 
-### DICAS E SUGESTOÕES
+### DICAS E SUGESTÕES
+- 
 - Utilize o código sempre quebrando a infra em arquivos diferentes.
 - Os recursos principais, como instâncias, blobs/buckets, um database, é ideal que se coloque no arquivo main.tf.
 - Recursos separados, tal como SG, variáveis, etc, é ideal que se separe em outros arquivos. 
