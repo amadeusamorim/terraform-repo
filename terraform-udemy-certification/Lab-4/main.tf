@@ -25,21 +25,28 @@ resource "aws_security_group" "web" {
     description = "(Opcional) Security Group for my WebServer"
     
     ## INBOUND RULES ##
-    ingress = {
-        description = "Allow port HTTP"
-        from_port   = 80
-        to_port     = 80
-        protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"] # Permito toda conexão
-    }
-
-    ingress = {
-        description = "Allow port HTTPS"
-        from_port   = 443
-        to_port     = 443
-        protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"] # Permito toda conexão
-    }
+  ingress = [{
+      description      = "FW HTTP Rules"
+      from_port        = 80
+      to_port          = 80
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      security_groups  = []
+      prefix_list_ids = []
+      self = false
+    },
+    {
+      description      = "FW HTTPS Rules"
+      from_port        = 443
+      to_port          = 443
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      security_groups  = []
+      prefix_list_ids = []
+      self = false
+  }]
 
     ## OUTBOUND RULES ##
     egress = {
