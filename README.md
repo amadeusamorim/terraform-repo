@@ -102,7 +102,7 @@ $ terraform refresh
   - Também pode ser feito via comando, como repassado na seção anterior.
 
 ### DICAS E SUGESTÕES
-- 
+
 - Utilize o código sempre quebrando a infra em arquivos diferentes.
 - Os recursos principais, como instâncias, blobs/buckets, um database, é ideal que se coloque no arquivo main.tf.
 - Recursos separados, tal como SG, variáveis, etc, é ideal que se separe em outros arquivos. 
@@ -117,3 +117,4 @@ $ terraform refresh
   - Usar as configs do `.terraformrc` passando a API como parâmetro, ver config-file aqui: https://www.terraform.io/cli/config/config-file
   - O arquivo `.terraformrc` tem os seguintes requisitos: conter o token de acesso e ficar na home do usuário.
 - Após subir o ambiente para o remote teremos controle de versionamento.
+- É importante olhar na documentação o que pode ou não ser printado em output em "Attributes Reference".
