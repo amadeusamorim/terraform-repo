@@ -73,6 +73,8 @@ $ terraform plan
 ```bash
 $ terraform apply
 ```
+ * É possível utilizar o `terraform apply -var="nomevar=valorvar"` para repassar uma variável da cli
+
 4. Mostra uma _foto_ de como está seu ambiente naquele momento.
 ```bash
 $ terraform show
@@ -118,3 +120,6 @@ $ terraform refresh
   - O arquivo `.terraformrc` tem os seguintes requisitos: conter o token de acesso e ficar na home do usuário.
 - Após subir o ambiente para o remote teremos controle de versionamento.
 - É importante olhar na documentação o que pode ou não ser printado em output em "Attributes Reference".
+- É possível passar variáveis pela CLI (Ver em terraform apply nesse doc).
+- É possível exportar uma variável para o ambiente `TF_VAR_nomevar="valorvar"`.
+- Importante ver na documentação a ordem de precedência das variáveis.
