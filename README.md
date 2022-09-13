@@ -110,7 +110,8 @@ $ terraform refresh
 - Recursos separados, tal como SG, variáveis, etc, é ideal que se separe em outros arquivos. 
 - Utilizar o `depends_on` para organizar a infra, provisionando os recursos em ordem de prioridade.
 - A recomendação é que tenhamos sempre os arquivos `main.tf`, `vars.tf` e `outputs.tf`.
-- É importante usar sempre o modo remote para um melhor trabalho em equipe.
+- É importante usar sempre o modo remote para um melhor trabalho em equipe, pois várias pessoas podem mexer no código simultaneamente.
+- Modo remoto também é conhecido como Backend. Para isso é necessário:
   - Necessário criar uma conta na nuvem (site da Hashicorp).
     - Criar uma 'Nova organização'
     - Dentro da organização eu vou ter as configs da minha infra (histórico e setups).
@@ -118,6 +119,7 @@ $ terraform refresh
   - Criar um arquivo de configuração na home do seu usuário local.
   - Usar as configs do `.terraformrc` passando a API como parâmetro, ver config-file aqui: https://www.terraform.io/cli/config/config-file
   - O arquivo `.terraformrc` tem os seguintes requisitos: conter o token de acesso e ficar na home do usuário.
+- Recomendável usar layers para cada departamento, DevOps, Engenheria, SRE, etc, trabalhar em uma diferente.
 - Após subir o ambiente para o remote teremos controle de versionamento.
 - É importante olhar na documentação o que pode ou não ser printado em output em "Attributes Reference".
 - É possível passar variáveis pela CLI (Ver em terraform apply nesse doc).
