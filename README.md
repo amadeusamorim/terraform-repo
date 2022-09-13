@@ -92,6 +92,11 @@ $ terraform destroy
 ```bash
 $ terraform refresh
 ```
+8. Recupera o código destruído (se ele ainda constar no script). Importante usar depois de `terraform init` e antes de `terraform plan` e `terraform apply`.
+```bash
+$ terraform taint instance
+```
+
 
 ### DENTRO DO CÓDIGO
 - Para utilizarmos as dependências entre os recursos, é necessário o `depends_on`. Dentro do código ele vincula recursos, desta forma a criação/exclusão de um implica respectivamente no outro.
