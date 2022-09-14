@@ -126,6 +126,21 @@ $ terraform taint instance
   - Não pode deletar um workspace que você está usando no momento.
   - Se você fez deploy com um workspace, primeiro você tem que dar um `terraform deploy`, antes do `workspace delete`.
 
+### REFATORANDO O CÓDIGO TERRAFORM
+- O Refatoramento do código do seu Terraform ajuda a manter o ambiente organizado e que as alterações futuras não demorem muito.
+- É normal em grandes ambientes, caso não esteja refatorado, uma pasta só conter mais de 800 arquivos de configuração da sua infra.
+- Alguns códigos são necessários para a organização, são:
+- `terraform state show recurso.nome` -> Mostra as configurações de um recurso específico. (É um comando seguro, ou seja, nada acontece se você der enter).
+- `terraform state list` -> Mostra todos os recursos que existem no arquivo state. Mostra o recurso e qual o seu nome em uma lista. (É um comando seguro, ou seja, nada acontece se você der enter).
+- `terraform state pull` -> Coloca o arquivo state na sua tela. Vai mostrar em .json todo o escopo da sua infraestrutura da pasta. (É um comando seguro, ou seja, nada acontece se você der enter).
+  - Posso direcionar meu `pull` para um arquivo por meio do comando bash, usando > e destinando um file. Dessa forma fica mais fácil de trabalhar em alterações na infra.
+- `terraform state rm` -> Remove os resultados do state completamente. Remove o recurso do Terraform. (É um comando perigoso, importante checar novamente antes de dar enter).
+- `terraform state mv` -> Move um recurso dentro de um state de um lugar para outro. (É um comando perigoso, importante checar novamente antes de dar enter).
+  - Posso usar também para renomear um state, usando por exemplo: `terraform state mv aws_epi.prodd aws_eip.prod`, o arquivo passará a ter o nome terminado em prod.
+  - `terraform state mv -state-out="terraform.tfstate" aws_eip.prod aws_eip.prod` -> Extraio o meu arquivo para o .tfstate. É sempre guardado um backup do meu .tfstate.
+
+- `terraform state push` -> Sobrescreve um arquivo state. (É um comando perigoso, importante checar novamente antes de dar enter).
+
 
 ### DICAS E SUGESTÕES
 
