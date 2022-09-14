@@ -108,6 +108,11 @@ $ terraform taint instance
   - Também é possível comentar o código para o Terraform destruí-lo.
   - Também pode ser feito via comando, como repassado na seção anterior.
 
+### IMPORTANDO RECURSOS EXISTENTES
+1. Você precisa ter recursos existentes.
+2. Precisa começar a escrever o seu código no Terraform, criando a instância.
+3. Depois é necessário dar o `terraform init` e em seguida `terraform import provedor_instancia.nome_instancia instance ID do provedor`
+
 ### DICAS E SUGESTÕES
 
 - Utilize o código sempre quebrando a infra em arquivos diferentes.
