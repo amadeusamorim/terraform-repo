@@ -22,6 +22,11 @@ Para usar a ferramenta é necessário apenas **baixar** o Terraform.
 - Você pode usar qualquer editor de texto que preferir, até mesmo o bloco de notas do Windows.
 - Não precisa compilar o código.
 - Funciona em Windows, Linux, Mac, Solaris, etc
+- Exitem três edições do Terraform:
+  - Terraform CLI Open Source (terraform.exe)
+  - Terraform Cloud (https://app.terraform.io)
+  - Terraform Cloud Enterprise (Self-hosted distribution of Terraform Cloud)
+    - Terraform Enterprise dispõe de tudo do cloud com o aditivo das Sentinels Policies e etc.
 
 Se você tem uma infra no código, você vai otimizar muito o seu tempo em provisionar ambientes.
 
