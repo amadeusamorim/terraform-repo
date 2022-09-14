@@ -88,13 +88,29 @@ $ terraform destroy -target aws.instance.dev4
 ```bash
 $ terraform destroy
 ```
-7. Faz o reload do código.
+7. Faz o reload do código. Checa o que está no seu state file e no que está deploy. Se tiver algum gap, ele atualiza o statefile.
 ```bash
 $ terraform refresh
 ```
 8. Recupera o código destruído (se ele ainda constar no script). Importante usar depois de `terraform init` e antes de `terraform plan` e `terraform apply`.
 ```bash
 $ terraform taint instance
+```
+9. Checa todo o seu código e retorna erros de resultados não declarados. Se o código estiver ok ele informa que a configuração está válida.
+```bash
+$ terraform validate
+```
+10. Printa apenas o que temos no nosso output.
+```bash
+$ terraform output
+```
+11. Printa toda a configuração e os valores default.
+```bash
+$ terraform show
+```
+12. Você entra dentro do console do terraform. Dá para printar nomes com upper, lower, codificar, passar listas, etc.
+```bash
+$ terraform console
 ```
 
 
@@ -164,3 +180,4 @@ $ terraform taint instance
 - É possível passar variáveis pela CLI (Ver em terraform apply nesse doc).
 - É possível exportar uma variável para o ambiente `TF_VAR_nomevar="valorvar"`.
 - Importante ver na documentação a ordem de precedência das variáveis.
+- O parâmetro `-auto-approve` evita confirmações na execução de um comando.
