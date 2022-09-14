@@ -113,6 +113,20 @@ $ terraform taint instance
 2. Precisa começar a escrever o seu código no Terraform, criando a instância.
 3. Depois é necessário dar o `terraform init` e em seguida `terraform import provedor_instancia.nome_instancia instance ID do provedor`
 
+### TERRAFORM WORKSPACE
+- Workspace no Terraform é uma feature que permite você duplicar/clonar recursos com a mesma configuração, sem alteração.
+- Ideal é apenas para ser usados em TESTES.
+- Inclue 5 diferentes comandos
+- `terraform workspace show` -> Mostra o Workspace que você está trabalhando agora.
+- `terraform workspace list` -> Mostra todos os Workspaces que você tem agora e aponta para qual deles você se encontra.
+- `terraform workspace new` -> Após o new, passa o nome do novo Workspace a ser criado, após o comando, é criado um novo workspace e alterado para lá (switched).
+  - Ainda que você dê `terraform deploy` agora, nada vai acontecer, muitos dos recursos não podem ter deploy com o mesmo nome.
+- `terraform workspace select` -> Após o select você coloca o nome do workspace que você quer trocar e utilizar dos existentes.
+- `terraform workspace delete` -> Após o delete você coloca o nome do workspace que você quer deletar, após os testes realizados. 
+  - Não pode deletar um workspace que você está usando no momento.
+  - Se você fez deploy com um workspace, primeiro você tem que dar um `terraform deploy`, antes do `workspace delete`.
+
+
 ### DICAS E SUGESTÕES
 
 - Utilize o código sempre quebrando a infra em arquivos diferentes.
